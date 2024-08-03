@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+skip-string-normalization = true
+
+[project]
+name = 'python-documenter'
+version = '0.1.0'
+requires-python = '>=3.12'
+dependencies = [
+    'openai==1.*',
+    'python-dotenv==1.*',
+    'langchain',
+    'langchain-openai',
+    'httpx',
+    # 'pypandoc_binary',
+    'plotly',
+    'dash',
+    'networkx',
+]
