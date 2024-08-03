@@ -18,4 +18,4 @@ class FunctionCall(typing.NamedTuple):
     code: str
 
 
-FunctionCalls = Iterable[FunctionCall]
+ProgramExecution = Iterable[FunctionCall]

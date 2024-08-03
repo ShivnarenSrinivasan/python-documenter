@@ -14,12 +14,12 @@ def _default_matcher(function_path: str) -> bool:
 
 def trace_execution(
     program: Callable[[], None], matcher: _model.FunctionMatcher = _default_matcher
-) -> _model.FunctionCalls:
+) -> _model.ProgramExecution:
     collector = _FunctionCallCollector(matcher)
     sys.settrace(collector.trace_calls)
     program()
     sys.settrace(None)
-    function_calls = collector.get_function_calls()
+    function_calls = collector.get_program_execution()
     return function_calls
 
 
@@ -89,5 +89,5 @@ class _FunctionCallCollector:
         if self._matcher(frame.f_code.co_filename):
             self._call_stack_depth -= 1
 
-    def get_function_calls(self) -> _model.FunctionCalls:
+    def get_program_execution(self) -> _model.ProgramExecution:
         return copy.deepcopy(self._function_calls)

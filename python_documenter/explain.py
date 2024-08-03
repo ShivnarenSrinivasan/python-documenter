@@ -14,7 +14,7 @@ _SYS_PROMPT = pathlib.Path(__file__).parent.joinpath('prompts', 'explain_code.md
 
 
 def explain_all(
-    function_calls: _model.FunctionCalls,
+    function_calls: _model.ProgramExecution,
     llm: chat_models.BaseChatModel,
     outfile: pathlib.Path,
 ) -> None:
